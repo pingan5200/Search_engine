@@ -1,0 +1,24 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block content %}
+<table class="table table-hover mt-3">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">产品名称</th>
+            <th scope="col">重量</th>
+            <th scope="col">描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% load highlight %}
+        {% for item in page.object_list %}
+        <tr>
+            <th scope="row">{% highlight item.object.name with query %}</th>
+            <td>{{ item.object.weight }}</td>
+            <td>{% highlight item.object.describe with query %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
